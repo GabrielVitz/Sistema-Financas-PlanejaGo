@@ -79,6 +79,33 @@
 
     </div>
 
+   <div class="container mx-auto mt-6 px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-[#D2D2F3]">
+                <h3 class="text-sm font-medium text-gray-500 mb-2 uppercase tracking-wider">Saldo Total</h3>
+                <p class="text-3xl font-extrabold {{ ($saldoTotal ?? 0) >= 0 ? 'text-[#615ACD]' : 'text-red-500' }}">
+                    R$ {{ number_format($saldoTotal ?? 0, 2, ',', '.') }}
+                </p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-[#D2D2F3]">
+                <h3 class="text-sm font-medium text-gray-500 mb-2 uppercase tracking-wider">Receitas</h3>
+                <p class="text-3xl font-extrabold text-emerald-500">
+                    + R$ {{ number_format($totalReceitas ?? 0, 2, ',', '.') }}
+                </p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-[#D2D2F3]">
+                <h3 class="text-sm font-medium text-gray-500 mb-2 uppercase tracking-wider">Despesas</h3>
+                <p class="text-3xl font-extrabold text-red-500">
+                    - R$ {{ number_format($totalDespesas ?? 0, 2, ',', '.') }}
+                </p>
+            </div>
+
+        </div>
+    </div>
+
     <div class="container mx-auto mt-6 px-6">
 
     <div class="flex justify-end">
@@ -104,7 +131,6 @@
         </form>
 
     </div>
-
 </div>
 
     <div class="container mx-auto mt-6 px-6 w-full">
@@ -166,34 +192,41 @@
             </thead>
 
 
-            <tbody id="tabela-lancamentos">
-                @foreach ($lancamentos as $lancamento)
-                    <tr class="border-t linha-lancamento" data-data="{{ \Carbon\Carbon::parse($lancamento->data_criacao)->format('Y-m') }}">
+            <tbody id="tabela-lancamentos" class="divide-y divide-gray-100">
+                @forelse ($lancamentos as $lancamento)
+                    <tr class="hover:bg-gray-50/50 transition duration-150 linha-lancamento" data-data="{{ \Carbon\Carbon::parse($lancamento->data_criacao)->format('Y-m') }}">
 
                         <td class="p-3">
                             @if($lancamento->tipo_lancamento_id == 1)
                                 <label class="inline-flex items-center cursor-pointer">
-                                    <span class="text-sm text-gray-700">Não Paga</span>
+                                    <span class="text-xs font-medium text-gray-500 mr-2">Não Paga</span>
 
                                     <input type="checkbox" class="sr-only peer switch-status" data-id="{{ $lancamento->id }}" {{ $lancamento->status_pago ? 'checked' : '' }}>
 
-                                    <div class="mx-3 w-9 h-5 bg-gray-300 rounded-full relative
-                                                peer-checked:bg-green-500
+                                    <div class="w-9 h-5 bg-gray-200 rounded-full relative peer-focus:ring-2 peer-focus:ring-[#615ACD]
+                                                peer-checked:bg-emerald-500 transition-colors
                                                 after:content-[''] after:absolute after:top-[2px] after:left-[2px]
-                                                after:bg-white after:h-4 after:w-4 after:rounded-full
-                                                after:transition-all
-                                                peer-checked:after:translate-x-full">
+                                                after:bg-white after:h-4 after:w-4 after:rounded-full after:shadow-sm
+                                                after:transition-transform peer-checked:after:translate-x-full">
                                     </div>
 
-                                    <span class="text-sm text-gray-700">Paga</span>
+                                    <span class="text-xs font-medium text-gray-500 ml-2">Paga</span>
                                 </label>
                             @endif
                         </td>
 
                         <td class="p-3 coluna-busca">{{ $lancamento->tipoLancamento->titulo ?? 'N/A' }}</td>
-                        <td class="p-3 coluna-busca font-medium text-gray-900">{{ $lancamento->descricao }}</td>
-                        <td class="p-3 coluna-busca">{{ $lancamento->categoria->titulo ?? 'N/A' }}</td>
-                        <td class="p-3 font-semibold text-gray-900">R$ {{ number_format($lancamento->valor, 2, ',', '.') }}</td>
+                            <span class="px-3 py-1 rounded-full text-xs font-semibold 
+                                {{ $lancamento->tipo_lancamento_id == 2 ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700' }}">
+                                {{ $lancamento->tipoLancamento->titulo ?? 'N/A' }}
+                            </span>
+                        <td class="p-3 coluna-busca font-medium text-gray-800">{{ $lancamento->descricao }}</td>
+                        
+                        <td class="p-3 coluna-busca text-gray-600">{{ $lancamento->categoria->titulo ?? 'N/A' }}</td>
+                        
+                        <td class="p-3 font-bold" {{ $lancamento->tipo_lancamento_id == 2 ? 'text-emerald-600' : 'text-rose-600' }}">
+                            {{ $lancamento->tipo_lancamento_id == 2 ? '+' : '-' }} R$ {{ number_format($lancamento->valor, 2, ',', '.') }}
+                        </td>
 
                         <td class="p-3 flex gap-2">
                             @if($lancamento->tipo_lancamento_id == 1)
@@ -207,7 +240,7 @@
                                         data-criacao="{{ \Carbon\Carbon::parse($lancamento->data_criacao)->format('Y-m-d') }}"
                                         data-vencimento="{{ $lancamento->data_vencimento ? \Carbon\Carbon::parse($lancamento->data_vencimento)->format('Y-m-d') : '' }}">
                                     
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-600 group-hover:text-[#615ACD] transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-400 group-hover:text-[#615ACD] transition">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                     </svg>
@@ -237,7 +270,7 @@
                                         data-frequencia="{{ $lancamento->frequencia_id }}"
                                         data-criacao="{{ \Carbon\Carbon::parse($lancamento->data_criacao)->format('Y-m-d') }}">
                                     
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-600 group-hover:text-[#615ACD] transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-400 group-hover:text-[#615ACD] transition">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                     </svg>
@@ -251,16 +284,16 @@
                                         data-frequencia="{{ $lancamento->frequencia_id }}"
                                         data-criacao="{{ \Carbon\Carbon::parse($lancamento->data_criacao)->format('Y-m-d') }}">
 
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-600 group-hover:text-blue-500 transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125" />
                                     </svg>
                                 </button>
                             @endif
 
-                            <button type="button" class="p-2 rounded-md hover:bg-red-50 transition group btn-abrir-modal-deletar" 
+                            <button type="button" class="p-2 rounded-md hover:bg-rose-50 transition group btn-abrir-modal-deletar" 
                                     data-id="{{ $lancamento->id }}" 
                                     data-descricao="{{ $lancamento->descricao }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-600 group-hover:text-red-500 transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-400 group-hover:text-rose-500 transition">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                                 </svg>
                             </button>
@@ -268,7 +301,19 @@
                         </td>
 
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="6" class="p-10 text-center text-gray-500">
+                            <div class="flex flex-col items-center justify-center">
+                                <svg class="w-12 h-12 text-gray-300 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                                <p class="text-base font-medium">Nenhuma movimentação registrada.</p>
+                                <p class="text-sm mt-1">Comece adicionando uma receita ou despesa no botão acima!</p>
+                            </div>
+                        </td>
+                    </tr>    
+                @endforelse
             </tbody>
 
 
