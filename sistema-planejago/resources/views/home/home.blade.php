@@ -20,7 +20,7 @@
             </p>
             
             <div class="pt-4">
-                <a href="#" class="inline-block bg-[#5B51D8] hover:bg-[#4A40C5] text-white font-semibold px-10 py-3.5 rounded-xl shadow-md transition duration-200 ease-in-out transform hover:-translate-y-0.5">
+                <a href="{{ route('user.create') }}" class="inline-block bg-[#5B51D8] hover:bg-[#4A40C5] text-white font-semibold px-10 py-3.5 rounded-xl shadow-md transition duration-200 ease-in-out transform hover:-translate-y-0.5">
                     Começar
                 </a>
             </div>
