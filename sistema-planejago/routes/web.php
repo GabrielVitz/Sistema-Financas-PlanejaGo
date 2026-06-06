@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function () {
     }
 });
 
+Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('user.dashboard')->middleware('auth');
+
 Route::get('/calculadora', function () {
     // Verifica se o usuário está logado
     if (!auth()->check()) {
