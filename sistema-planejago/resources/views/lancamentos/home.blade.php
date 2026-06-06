@@ -469,6 +469,14 @@
             });
             // Endregion Carregar Modal
             
+            //Region Abrir Modal
+            $('#btn-abrir-modal-receita').on('click', function(){
+                $('#container-modal-receita').removeClass('hidden');
+            });
+            
+            $('#btn-abrir-modal-despesa').on('click', function(){
+                $('#container-modal-despesa').removeClass('hidden');
+            });
 
             // Region Fechar Modal
             $(document).on('click', '#btn-fechar-modal', function () {
