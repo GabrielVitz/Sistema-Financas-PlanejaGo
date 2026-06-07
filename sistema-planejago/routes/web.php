@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LancamentoController;
+use App\Http\Controllers\RelatorioController;
 use App\Http\Controllers\UserController;
 
 // 1. Tela de apresentação / Landing Page (Pública)
@@ -29,21 +30,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/home', [LoginController::class, 'index'])->name('user.home');
         Route::post('/logout', [LoginController::class, 'destroy'])->name('login.destroy');
     }
-});
 
-Route::get('/calculadora', function () {
-    // Verifica se o usuário está logado
-    if (!auth()->check()) {
-        // Se não estiver, redireciona para a tela de login (ajuste o caminho se necessário)
-        return redirect()->route('login.index');
-    }
-  
-    return view('home.calculadora');
-})->name('calculadora');
-
-
-// Lançamentos organizados e agrupados
-Route::prefix('lancamentos')->controller(LancamentoController::class)->group(function () {
+    // Lançamentos organizados e agrupados
+    Route::prefix('lancamentos')->controller(LancamentoController::class)->group(function () {
     Route::get('/', 'index')->name('user.lancamentos');
     Route::delete('/deletar/{id}', 'deletar')->name('lancamentos.deletar');
     
@@ -60,4 +49,17 @@ Route::prefix('lancamentos')->controller(LancamentoController::class)->group(fun
 });
   
 
+Route::get('/relatorio', [RelatorioController::class, 'index'])->name('relatorio.index');
+
+});
+
+Route::get('/calculadora', function () {
+    // Verifica se o usuário está logado
+    if (!auth()->check()) {
+        // Se não estiver, redireciona para a tela de login (ajuste o caminho se necessário)
+        return redirect()->route('login.index');
+    }
   
+    return view('home.calculadora');
+})->name('calculadora');
+
