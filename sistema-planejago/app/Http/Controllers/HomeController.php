@@ -16,6 +16,16 @@ class HomeController extends Controller
         $userId = Auth()->id();
         $anoAtual = date('Y');
 
+        $totalReceitas = \App\Models\Lancamento::where('user_id', $userId)
+            ->where('tipo_lancamento_id', 2)
+            ->sum('valor');
+        
+        $totalDespesas = \App\Models\Lancamento::where('user_id', $userId)
+            ->where('tipo_lancamento_id', 1)
+            ->sum('valor');
+            
+        $saldoTotal = $totalReceitas - $totalDespesas;
+
         // 1. DADOS GRÁFICO PRINCIPAL: Agrupando por mês do ano atual
         $movimentacoes = Lancamento::selectRaw('MONTH(data_criacao) as mes, tipo_lancamento_id, SUM(valor) as total')
             ->where('user_id', $userId)
@@ -56,7 +66,9 @@ class HomeController extends Controller
 
         return view('home.dashboard', compact(
             'meses', 'dadosReceitas', 'dadosDespesas',
-            'labelsCategorias', 'dadosCategorias'
+            'labelsCategorias', 'dadosCategorias',
+            // Adicione as três variáveis novas aqui embaixo:
+            'totalReceitas', 'totalDespesas', 'saldoTotal'
         ));
     }
 }

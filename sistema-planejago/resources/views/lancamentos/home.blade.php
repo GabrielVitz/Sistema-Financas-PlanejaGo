@@ -166,6 +166,7 @@
 
                             </div>
 
+
                             <button type="button" id="btn-proximo-mes" class="p-2 rounded-full hover:bg-white/60 transition focus:outline-hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 hover:text-[#615ACD] transition">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -313,6 +314,7 @@
                     </tr>    
                 @endforelse
             </tbody>
+
 
                 <thead class="bg-[#F8F8FF] text-[#131047]">
                     <tr>
