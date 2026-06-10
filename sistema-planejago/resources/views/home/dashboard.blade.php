@@ -4,27 +4,43 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+    .font-roboto { font-family: 'Roboto', sans-serif; }
+</style>
+
 <div class="p-8 max-w-7xl mx-auto">
     
     <div class="mb-8">
-        <h1 class="text-3xl font-bold text-[#615ACD] tracking-tight">Dashboard</h1>
-        <p class="text-gray-600 mt-2 text-sm">Acompanhe seu progresso rumo aos R$ 30.000 da sua moto 0km.</p>
+        <h1 class="text-3xl font-bold text-[#615ACD] tracking-tight">
+            Olá,{{ explode(' ', auth()->user()->name)[0]}}!    
+        </h1>
+        <p class="text-lg md:text-xl font-bold text-[#2D2A54] mt-2">Poupar hoje é garantir tranquilidade amanhã.</p>
     </div>
 
-    <div class="flex gap-4 mb-8">
-        <button id="btn-abrir-modal-receita-dash" class="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-3 rounded-xl font-medium shadow-sm transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-            </svg>
-            Nova Receita
-        </button>
+    <div>
 
-        <button id="btn-abrir-modal-despesa-dash" class="flex items-center gap-2 bg-rose-500 hover:bg-rose-600 text-white px-5 py-3 rounded-xl font-medium shadow-sm transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
-            </svg>
-            Nova Despesa
-        </button>
+        <div class="bg-[#EAEAF6] rounded-xl px-6 py-3 shadow-sm min-w-[320px]">
+            
+            <div class="text-center mb-2">
+                <span class="text-base font-bold text-[#2D2A54]">Acesso Rápido</span>
+            </div>
+
+            <div class="flex justify-center gap-6">
+                <button id="btn-abrir-modal-despesa-dash" class="flex items-center gap-1.5 text-[#2D2A54] hover:text-[#615ACD] transition">
+                    <span class="text-2xl font-black leading-none">+</span>
+                    <span class="font-medium">Criar Nova Despesa<span>
+                </button>
+            </div>
+
+            <div class="flex justify-center gap-6">
+                <button id="btn-abrir-modal-receita-dash" class="flex items-center gap-1.5 text-[#2D2A54] hover:text-[#615ACD] transition">
+                    <span class="text-2xl font-black leading-none">+</span>
+                    <span class="font-medium">Criar Nova Receita<span>
+                </button>
+            </div>
+        </div>
+
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
