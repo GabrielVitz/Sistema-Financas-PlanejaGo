@@ -55,8 +55,6 @@
                 
                 <div class= "flex flex-col gap-4 pt-4">
 
-                    <a class="text-sm text-[#2C2966]"> Esqueci minha Senha</a>
-
                     <div class="flex justify-center">
                         <button type="submit" class="inline-block bg-[#5B51D8] hover:bg-[#4A40C5] text-white font-semibold w-full p-1.5 rounded-xl shadow-md transition duration-200 ease-in-out transform hover:-translate-y-0.5">Entrar</button>
                     </div>

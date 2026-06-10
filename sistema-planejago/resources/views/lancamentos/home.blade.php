@@ -20,7 +20,7 @@
         </div>
 
         <script type="module">
-            $(document).ready(function()
+            $(document).ready(function(){
                 $('#alerta-sucesso').delay(4000).fadeOut(500, function() {
                     $(this).remove();
                 });
@@ -108,64 +108,62 @@
 
     <div class="container mx-auto mt-6 px-6">
 
-    <div class="flex justify-end">
-
-        <form class="w-full max-w-lg">
-
+    <div class="flex justify-end w-full">
+        <form class="w-full max-w-md">
             <label for="search" class="sr-only">Search</label>
-
-            <div class="relative">
-
-                <!-- ícone -->
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-5 h-5 text-body" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
+            <div class="relative group">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-4 pointer-events-none">
+                    <svg class="w-5 h-5 text-gray-400 group-focus-within:text-indigo-600 transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
                     </svg>
                 </div>
-
-                <!-- input -->
-                <input type="search" id="search" class="block w-full p-4 ps-10 text-base rounded-base bg-[#D2D2F3] text-[#131047] border border-default-medium focus:ring-brand focus:border-brand shadow-xs placeholder:text-body" placeholder="Pesquisar lançamento">
-
+                <input type="search" id="search" class="block w-full py-2.5 px-4 ps-11 text-sm text-gray-900 bg-white border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 placeholder:text-gray-400" placeholder="Pesquisar lançamento...">
             </div>
-
         </form>
-
     </div>
 </div>
 
     <div class="container mx-auto mt-6 px-6 w-full">
+        <div class="overflow-x-auto w-full rounded-lg shadow-sm">
+            <table class="w-full table-auto text-sm md:text-base min-w-[700px]">
 
-        <table class="w-full table-auto">
+            <!--Parte mes-->
+            <thead class="bg-[#E5E5F6] text-[#131047]">
+                    <tr>
+                        <th colspan="6">
+                            <div class="flex items-center justify-between py-3 px-2 relative">
 
-           <!--Parte mes-->
-           <thead class="bg-[#E5E5F6] text-[#131047]">
-                <tr>
-                    <th colspan="6">
-                        <div class="flex items-center justify-between py-3 px-2 relative">
-
-                            <button type="button" id="btn-mes-anterior" class="p-2 rounded-full hover:bg-white/60 transition focus:outline-hidden">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 hover:text-[#615ACD] transition">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                                </svg>
-                            </button>
-
-                            <div class="relative">
-                                <button type="button" id="btn-dropdown-meses" class="flex items-center gap-1 text-lg font-semibold cursor-pointer hover:text-[#615ACD] transition focus:outline-hidden">
-                                    <span id="label-mes-atual">Maio</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mt-0.5">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                <button type="button" id="btn-mes-anterior" class="p-2 rounded-full hover:bg-white/60 transition focus:outline-hidden">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 hover:text-[#615ACD] transition">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                                     </svg>
                                 </button>
 
-                                <div id="dropdown-meses" class="absolute left-1/2 -translate-x-1/2 z-50 hidden w-36 mt-2 bg-white border border-gray-100 rounded-md shadow-lg ring-1 ring-black/5 focus:outline-hidden">
-                                    <div class="py-1 max-h-60 overflow-y-auto">
-                                        @foreach(['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'] as $index => $mesNome)
-                                            <button type="button" class="item-mes-select block w-full px-4 py-2 text-sm text-left text-gray-700 transition hover:bg-gray-100 hover:text-[#615ACD]" data-mes="{{ $index }}">
-                                                {{ $mesNome }}
-                                            </button>
-                                        @endforeach
+                                <div class="relative">
+                                    <button type="button" id="btn-dropdown-meses" class="flex items-center gap-1 text-lg font-semibold cursor-pointer hover:text-[#615ACD] transition focus:outline-hidden">
+                                        <span id="label-mes-atual">Maio</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mt-0.5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                        </svg>
+                                    </button>
+
+                                    <div id="dropdown-meses" class="absolute left-1/2 -translate-x-1/2 z-50 hidden w-36 mt-2 bg-white border border-gray-100 rounded-md shadow-lg ring-1 ring-black/5 focus:outline-hidden">
+                                        <div class="py-1 max-h-60 overflow-y-auto">
+                                            @foreach(['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'] as $index => $mesNome)
+                                                <button type="button" class="item-mes-select block w-full px-4 py-2 text-sm text-left text-gray-700 transition hover:bg-gray-100 hover:text-[#615ACD]" data-mes="{{ $index }}">
+                                                    {{ $mesNome }}
+                                                </button>
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
+
+                                <button type="button" id="btn-proximo-mes" class="p-2 rounded-full hover:bg-white/60 transition focus:outline-hidden">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 hover:text-[#615ACD] transition">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </button>
+
                             </div>
 
                             <button type="button" id="btn-proximo-mes" class="p-2 rounded-full hover:bg-white/60 transition focus:outline-hidden">
@@ -316,8 +314,126 @@
                 @endforelse
             </tbody>
 
+                <thead class="bg-[#F8F8FF] text-[#131047]">
+                    <tr>
+                        <th class="p-3"></th>
+                        <th class="p-3 text-left">Tipo</th>
+                        <th class="p-3 text-left">Descrição</th>
+                        <th class="p-3 text-left">Categoria</th>
+                        <th class="p-3 text-left">Valor</th>
+                        <th class="p-3 text-left">Ações</th>
+                    </tr>
+                </thead>
 
-        </table>
+
+                <tbody id="tabela-lancamentos">
+                    @foreach ($lancamentos as $lancamento)
+                        <tr class="border-t linha-lancamento" data-data="{{ \Carbon\Carbon::parse($lancamento->data_criacao)->format('Y-m') }}">
+
+                            <td class="p-3">
+                                @if($lancamento->tipo_lancamento_id == 1)
+                                    <label class="inline-flex items-center cursor-pointer">
+                                        <span class="text-sm text-gray-700">Não Paga</span>
+
+                                        <input type="checkbox" class="sr-only peer switch-status" data-id="{{ $lancamento->id }}" {{ $lancamento->status_pago ? 'checked' : '' }}>
+
+                                        <div class="mx-3 w-9 h-5 bg-gray-300 rounded-full relative
+                                                    peer-checked:bg-green-500
+                                                    after:content-[''] after:absolute after:top-[2px] after:left-[2px]
+                                                    after:bg-white after:h-4 after:w-4 after:rounded-full
+                                                    after:transition-all
+                                                    peer-checked:after:translate-x-full">
+                                        </div>
+
+                                        <span class="text-sm text-gray-700">Paga</span>
+                                    </label>
+                                @endif
+                            </td>
+
+                            <td class="p-3 coluna-busca">{{ $lancamento->tipoLancamento->titulo ?? 'N/A' }}</td>
+                            <td class="p-3 coluna-busca font-medium text-gray-900">{{ $lancamento->descricao }}</td>
+                            <td class="p-3 coluna-busca">{{ $lancamento->categoria->titulo ?? 'N/A' }}</td>
+                            <td class="p-3 font-semibold text-gray-900">R$ {{ number_format($lancamento->valor, 2, ',', '.') }}</td>
+
+                            <td class="p-3 flex gap-2">
+                                @if($lancamento->tipo_lancamento_id == 1)
+
+                                    <button class="p-2 rounded-md hover:bg-gray-100 transition group btn-abrir-modal-ver-despesa"
+                                            data-descricao="{{ $lancamento->descricao }}"
+                                            data-valor="{{ $lancamento->valor }}"
+                                            data-status="{{ $lancamento->status_pago ? 'true' : 'false' }}"
+                                            data-categoria="{{ $lancamento->categoria_id }}"
+                                            data-frequencia="{{ $lancamento->frequencia_id }}"
+                                            data-criacao="{{ \Carbon\Carbon::parse($lancamento->data_criacao)->format('Y-m-d') }}"
+                                            data-vencimento="{{ $lancamento->data_vencimento ? \Carbon\Carbon::parse($lancamento->data_vencimento)->format('Y-m-d') : '' }}">
+                                        
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-600 group-hover:text-[#615ACD] transition">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                        </svg>
+                                    </button>
+
+                                    <button class="p-2 rounded-md hover:bg-gray-100 transition group btn-abrir-modal-editar-despesa"
+                                            data-id="{{ $lancamento->id }}"
+                                            data-descricao="{{ $lancamento->descricao }}"
+                                            data-valor="{{ $lancamento->valor }}"
+                                            data-status="{{ $lancamento->status_pago ? 'true' : 'false' }}"
+                                            data-categoria="{{ $lancamento->categoria_id }}"
+                                            data-frequencia="{{ $lancamento->frequencia_id }}"
+                                            data-criacao="{{ \Carbon\Carbon::parse($lancamento->data_criacao)->format('Y-m-d') }}"
+                                            data-vencimento="{{ $lancamento->data_vencimento ? \Carbon\Carbon::parse($lancamento->data_vencimento)->format('Y-m-d') : '' }}">
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-600 group-hover:text-blue-500 transition">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125" />
+                                        </svg>
+                                    </button>
+
+                                @elseif ($lancamento->tipo_lancamento_id == 2)
+                                    
+                                    <button class="p-2 rounded-md hover:bg-gray-100 transition group btn-abrir-modal-ver-receita"
+                                            data-descricao="{{ $lancamento->descricao }}"
+                                            data-valor="{{ $lancamento->valor }}"
+                                            data-categoria="{{ $lancamento->categoria_id }}"
+                                            data-frequencia="{{ $lancamento->frequencia_id }}"
+                                            data-criacao="{{ \Carbon\Carbon::parse($lancamento->data_criacao)->format('Y-m-d') }}">
+                                        
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-600 group-hover:text-[#615ACD] transition">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                        </svg>
+                                    </button>
+
+                                    <button class="p-2 rounded-md hover:bg-gray-100 transition group btn-abrir-modal-editar-receita"
+                                            data-id="{{ $lancamento->id }}"
+                                            data-descricao="{{ $lancamento->descricao }}"
+                                            data-valor="{{ $lancamento->valor }}"
+                                            data-categoria="{{ $lancamento->categoria_id }}"
+                                            data-frequencia="{{ $lancamento->frequencia_id }}"
+                                            data-criacao="{{ \Carbon\Carbon::parse($lancamento->data_criacao)->format('Y-m-d') }}">
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-600 group-hover:text-blue-500 transition">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125" />
+                                        </svg>
+                                    </button>
+                                @endif
+
+                                <button type="button" class="p-2 rounded-md hover:bg-red-50 transition group btn-abrir-modal-deletar" 
+                                        data-id="{{ $lancamento->id }}" 
+                                        data-descricao="{{ $lancamento->descricao }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-600 group-hover:text-red-500 transition">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+
+                            </td>
+
+                        </tr>
+                    @endforeach
+                </tbody>
+
+
+            </table>
+        
     </div>
 
     <div id="container-modal-receita" class="hidden">
@@ -371,7 +487,7 @@
                 $('#container-modal-despesa').removeClass('hidden');
             });
 
-            $('.btn-abrir-modal-receita').on('click', function () {
+            $('#btn-abrir-modal-receita').on('click', function () {
                 $('#menu-dropdown-lancamento').addClass('hidden');
                 $('#container-modal-receita').removeClass('hidden');
             });
