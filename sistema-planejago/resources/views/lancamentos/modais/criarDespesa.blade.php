@@ -21,7 +21,7 @@
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                             <span class="text-gray-500 sm:text-sm">R$</span>
                         </div>
-                        <input type="number" step="0.01" id="valor" name="valor" class="block w-full py-2.5 pl-9 pr-3 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-[#615ACD] focus:border-[#615ACD] placeholder-gray-400" placeholder="0,00" required />
+                        <input type="number" step="0.01" min="0.01" max="999999.99" onkeydown="return !['e', 'E', '+', '-'].includes(event.key);" oninput="if(this.value > 999999.99) this.value = 999999.99; if(this.value.includes('.')) { let p = this.value.split('.'); if(p[1].length > 2) { this.value = p[0] + '.' + p[1].slice(0,2); } }" onblur="if(this.value) this.value = parseFloat(this.value).toFixed(2);" id="valor" name="valor" class="block w-full py-2.5 pl-9 pr-3 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-[#615ACD] focus:border-[#615ACD] placeholder-gray-400" placeholder="0,00" required />
                     </div>
                 </div>
                 
