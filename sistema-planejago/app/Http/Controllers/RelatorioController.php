@@ -7,14 +7,22 @@ use App\Models\TipoLancamento;
 use App\Models\Categoria;
 use App\Models\Lancamento;
 use Carbon\Carbon;
+use Illuminate\Validation\Rule;
 
 class RelatorioController extends Controller
 {
     public function index(Request $request) {
 
+        $request->validate([
+            'periodo' => ['nullable', Rule::in(['hoje', 'semana', 'mes'])],
+            'tipo_lancamento_id' => ['nullable', 'integer', 'exists:tipo_lancamentos,id'],
+            'categoria_id' => ['nullable', 'integer', 'exists:categorias,id'],
+            'status_pago' => ['nullable', Rule::in(['0', '1'])],
+        ]);
+ 
         $tipo_lancamentos = TipoLancamento::all();
         $categorias = Categoria::all();
- 
+
         $query = Lancamento::where('user_id', auth()->id());
  
         if ($request->filled('periodo')) {

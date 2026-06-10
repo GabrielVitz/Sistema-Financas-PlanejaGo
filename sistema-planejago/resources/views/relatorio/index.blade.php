@@ -52,11 +52,11 @@
             <label for="categoria_id" class="block mb-1.5 text-sm font-medium text-gray-700">Categoria</label>
             <select id="categoria_id" name="categoria_id"
                     class="block w-full px-3 py-2.5 text-sm text-gray-900 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-[#615ACD] focus:border-[#615ACD]">
-                <option value="" disabled {{ !request('categoria_id') ? 'selected' : '' }}>Selecione</option>
+                <option value="">Todas</option> 
                 @foreach($categorias as $c)
-                    <option value="{{ $c->id }}" {{ request('categoria_id') == $c->id ? 'selected' : '' }}>
-                        {{ $c->titulo }}
-                    </option>
+                        <option value="{{ $c->id }}" {{ request('categoria_id') == $c->id ? 'selected' : '' }}>
+                            {{ $c->titulo }}
+                        </option>
                 @endforeach
             </select>
         </div>
@@ -154,7 +154,6 @@
                             <th class="px-5 py-3">Valor</th>
                             <th class="px-5 py-3">Data</th>
                             <th class="px-5 py-3">Status</th>
-                            <th class="px-5 py-3 text-center">Ação</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-[#F0F0FA]">
