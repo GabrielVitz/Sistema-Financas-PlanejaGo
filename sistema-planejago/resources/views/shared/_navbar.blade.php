@@ -23,7 +23,7 @@
       <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
         <div class="flex shrink-0 items-center">
           <!--Titulo principal -->
-          <a href="/" class="text-lg font-bold text-[#FFA051] hover:text-white">PlanejaGo</a>
+          <a href="{{ auth()->check() ? route('user.dashboard') : url('/') }}" class="text-lg font-bold text-[#FFA051] hover:text-white">PlanejaGo</a>
         </div>
           
         

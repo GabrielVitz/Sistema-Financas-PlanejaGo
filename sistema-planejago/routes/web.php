@@ -31,8 +31,23 @@ Route::middleware('auth')->group(function () {
         Route::post('/logout', [LoginController::class, 'destroy'])->name('login.destroy');
     }
 
+
+Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('user.dashboard')->middleware('auth');
+
+    Route::get('/calculadora', function () {
+        // Verifica se o usuário está logado
+        if (!auth()->check()) {
+            // Se não estiver, redireciona para a tela de login (ajuste o caminho se necessário)
+            return redirect()->route('login.index');
+        }
+    
+        return view('home.calculadora');
+    })->name('calculadora');
+
+
     // Lançamentos organizados e agrupados
     Route::prefix('lancamentos')->controller(LancamentoController::class)->group(function () {
+
     Route::get('/', 'index')->name('user.lancamentos');
     Route::delete('/deletar/{id}', 'deletar')->name('lancamentos.deletar');
     

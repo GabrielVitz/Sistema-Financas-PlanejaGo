@@ -9,12 +9,25 @@ use Carbon\Carbon;
 class LancamentoController extends Controller
 {
     public function index () {
-        $lancamentos = Lancamento::with(['categoria', 'tipoLancamento'])
-            ->where('user_id', auth()->id())
+
+        $userId = auth()->id();
+
+         $totalReceitas = Lancamento::where('user_id', $userId)
+            ->where('tipo_lancamento_id', 2)
+            ->sum('valor');
+        
+        $totalDespesas = Lancamento::where('user_id', $userId)
+            ->where('tipo_lancamento_id', 1)
+            ->sum('valor');
+            
+        $saldoTotal = $totalReceitas - $totalDespesas;
+
+         $lancamentos = Lancamento::with(['categoria', 'tipoLancamento'])
+            ->where('user_id', $userId)
             ->orderBy('data_vencimento', 'asc')
             ->get();
 
-        return view('lancamentos.home', compact('lancamentos'));
+        return view('lancamentos.home', compact('lancamentos', 'totalReceitas', 'totalDespesas', 'saldoTotal'));
     }
 
     public function criaDespesa (Request $request) {

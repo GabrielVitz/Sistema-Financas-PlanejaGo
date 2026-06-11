@@ -46,6 +46,6 @@ class UserController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route('home')->with('success', 'Cadastro realizado e logado com sucesso!');
+        return redirect()->route('user.dashboard')->with('success', 'Cadastro realizado e logado com sucesso!');
     }
 }
