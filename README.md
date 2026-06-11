@@ -34,8 +34,14 @@ O sistema centraliza ferramentas indispensáveis para o controle do seu dinheiro
 ## 📱 Demonstração Visual
 
 ### 🎬 Teste de Funcionamento
-*Abaixo, veja uma demonstração prática do fluxo de cadastro rápido de lançamentos no sistema:*
 
+<p align="center">
+  Abaixo, veja uma demonstração prática do fluxo de cadastro rápido de lançamentos no sistema:
+</p>
+
+<p align="center">
+  <img width="800" alt="Demonstração do PlanejaGo" src="https://github.com/user-attachments/assets/502afd8b-447d-4fc9-bc1a-5e3648f032f2" />
+</p>
 
 
 ### 📸 Capturas de Tela (Interface)
@@ -98,7 +104,9 @@ Antes de começar, certifique-se de ter instalado:
 ### 📥 1. Clone o Repositório
 
 ```bash
-git clone https://github.com/seu-usuario/planejago.git
+git clone https://github.com/GabrielVitz/Sistema-Financas-PlanejaGo
+
+
 cd sistema-planejago
 ```
 
