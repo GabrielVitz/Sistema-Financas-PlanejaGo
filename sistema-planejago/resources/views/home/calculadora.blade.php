@@ -457,5 +457,14 @@
         }
     });
 }
+    window.addComum = addComum;
+    window.limparComum = limparComum;
+    window.calcularComum = calcularComum;
+    window.calcularJuros = calcularJuros;
+    window.fecharModal = fecharModal;
+    window.abrirModal = abrirModal;
+    window.mostrarToastPersonalizado = mostrarToastPersonalizado;
+
+
 </script>
 @endsection
