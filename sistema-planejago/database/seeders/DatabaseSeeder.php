@@ -41,9 +41,83 @@ class DatabaseSeeder extends Seeder
             ['id' => 5, 'titulo' => 'Investimentos', 'descricao' => 'Rendimentos', 'tipo_lancamento_id' => 2, 'created_at' => $agora, 'updated_at' => $agora],
             ['id' => 6, 'titulo' => 'Empréstimos', 'descricao' => 'Valores tomados', 'tipo_lancamento_id' => 2, 'created_at' => $agora, 'updated_at' => $agora],
         ]);
-
+        
         $this->call([
             UserSeeder::class,
         ]);
+
+        DB::table('lancamentos')->insert([
+            [
+                'descricao' => 'Plano de Saúde',
+                'valor' => 350.00,
+                'status_pago' => 1, 
+                'data_criacao' => '2026-06-01',
+                'data_vencimento' => '2026-06-05',
+                'log_data_inclusao' => '2026-06-01 10:00:00',
+                'log_data_alteracao' => '2026-06-01 10:00:00',
+                'log_versao_registro' => 1,
+                'categoria_id' => 3,
+                'frequencia_id' => 4,
+                'tipo_lancamento_id' => 1,
+                'user_id' => 1,
+            ],
+            [
+                'descricao' => 'Mensalidade Escolar',
+                'valor' => 600.00,
+                'status_pago' => 1,
+                'data_criacao' => '2026-06-03',
+                'data_vencimento' => '2026-06-06',
+                'log_data_inclusao' => '2026-06-03 14:30:00',
+                'log_data_alteracao' => '2026-06-03 14:30:00',
+                'log_versao_registro' => 1,
+                'categoria_id' => 2,
+                'frequencia_id' => 4,
+                'tipo_lancamento_id' => 1,
+                'user_id' => 1,
+            ],
+            [
+                'descricao' => 'Conta de Água',
+                'valor' => 95.90,
+                'status_pago' => 0,
+                'data_criacao' => '2026-06-05',
+                'data_vencimento' => '2026-06-15',
+                'log_data_inclusao' => '2026-06-05 09:15:00',
+                'log_data_alteracao' => '2026-06-05 09:15:00',
+                'log_versao_registro' => 1,
+                'categoria_id' => 1,
+                'frequencia_id' => 4,
+                'tipo_lancamento_id' => 1,
+                'user_id' => 1,
+            ],
+            [
+                'descricao' => 'Farmácia - Remédios',
+                'valor' => 85.00,
+                'status_pago' => 1,
+                'data_criacao' => '2026-06-06',
+                'data_vencimento' => '2026-06-06',
+                'log_data_inclusao' => '2026-06-06 20:00:00',
+                'log_data_alteracao' => '2026-06-06 20:00:00',
+                'log_versao_registro' => 1,
+                'categoria_id' => 3,
+                'frequencia_id' => 1,
+                'tipo_lancamento_id' => 1,
+                'user_id' => 1,
+            ],
+            [
+                'descricao' => 'Internet Fibra',
+                'valor' => 150.00,
+                'status_pago' => 0,
+                'data_criacao' => '2026-06-07',
+                'data_vencimento' => '2026-06-10',
+                'log_data_inclusao' => '2026-06-07 08:00:00',
+                'log_data_alteracao' => '2026-06-07 08:00:00',
+                'log_versao_registro' => 1,
+                'categoria_id' => 1,
+                'frequencia_id' => 4,
+                'tipo_lancamento_id' => 1,
+                'user_id' => 1,
+            ]
+        ]);
+        
     }
 }
