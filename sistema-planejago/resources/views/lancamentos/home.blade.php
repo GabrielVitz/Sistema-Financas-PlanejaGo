@@ -166,13 +166,6 @@
 
                             </div>
 
-
-                            <button type="button" id="btn-proximo-mes" class="p-2 rounded-full hover:bg-white/60 transition focus:outline-hidden">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 hover:text-[#615ACD] transition">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
-
                         </div>
                     </th>
                 </tr>
@@ -214,16 +207,21 @@
                             @endif
                         </td>
 
-                        <td class="p-3 coluna-busca">{{ $lancamento->tipoLancamento->titulo ?? 'N/A' }}</td>
-                            <span class="px-3 py-1 rounded-full text-xs font-semibold 
-                                {{ $lancamento->tipo_lancamento_id == 2 ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700' }}">
+                        <td class="p-3 coluna-busca">
+                            <span class="px-3 py-1 rounded-full text-xs font-semibold {{ $lancamento->tipo_lancamento_id == 2 ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700' }}">
                                 {{ $lancamento->tipoLancamento->titulo ?? 'N/A' }}
                             </span>
-                        <td class="p-3 coluna-busca font-medium text-gray-800">{{ $lancamento->descricao }}</td>
-                        
-                        <td class="p-3 coluna-busca text-gray-600">{{ $lancamento->categoria->titulo ?? 'N/A' }}</td>
-                        
-                        <td class="p-3 font-bold" {{ $lancamento->tipo_lancamento_id == 2 ? 'text-emerald-600' : 'text-rose-600' }}">
+                        </td>
+
+                        <td class="p-3 coluna-busca font-medium text-gray-800">
+                            {{ $lancamento->descricao }}
+                        </td>
+                                                
+                        <td class="p-3 coluna-busca text-gray-600">
+                            {{ $lancamento->categoria->titulo ?? 'N/A' }}
+                        </td>
+                                                
+                        <td class="p-3 font-bold {{ $lancamento->tipo_lancamento_id == 2 ? 'text-emerald-600' : 'text-rose-600' }}">
                             {{ $lancamento->tipo_lancamento_id == 2 ? '+' : '-' }} R$ {{ number_format($lancamento->valor, 2, ',', '.') }}
                         </td>
 
