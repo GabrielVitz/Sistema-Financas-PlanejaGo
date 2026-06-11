@@ -15,7 +15,7 @@
 <div class="container mx-auto p-4 md:p-6 min-h-screen bg-gray-50 text-gray-800">
     <ol class="flex items-center whitespace-nowrap ">
         <li class="inline-flex items-center">
-            <a class="flex items-center text-sm text-muted-foreground-1 hover:text-primary-focus focus:outline-hidden focus:text-primary-focus" href="/">
+            <a class="flex items-center text-sm text-muted-foreground-1 hover:text-primary-focus focus:outline-hidden focus:text-primary-focus" href="/dashboard">
                 Home
             </a>
             <svg class="shrink-0 mx-2 size-4 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
