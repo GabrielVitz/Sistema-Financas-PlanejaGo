@@ -117,30 +117,34 @@
                 </div>
 
                 <div class="grid grid-cols-5 gap-2.5 text-sm font-bold">
-                    <button type="button" onclick="addComum('(')" class="p-3 bg-indigo-50/50 text-[#4E44CE] rounded-xl">(</button>
-                    <button type="button" onclick="addComum(')')" class="p-3 bg-indigo-50/50 text-[#4E44CE] rounded-xl">)</button>
-                    <button type="button" onclick="addComum('**')" class="p-3 bg-indigo-50/50 text-[#4E44CE] rounded-xl">^</button>
-                    <button type="button" onclick="addComum('/100')" class="p-3 bg-indigo-50/50 text-[#4E44CE] rounded-xl">%</button>
-                    <button type="button" onclick="limparComum()" class="p-3 bg-red-50 text-red-500 rounded-xl">AC</button>
-                    <button type="button" onclick="addComum('7')" class="p-3 bg-gray-50 text-gray-700 rounded-xl">7</button>
-                    <button type="button" onclick="addComum('8')" class="p-3 bg-gray-50 text-gray-700 rounded-xl">8</button>
-                    <button type="button" onclick="addComum('9')" class="p-3 bg-gray-50 text-gray-700 rounded-xl">9</button>
-                    <button type="button" onclick="addComum('/')" class="p-3 bg-indigo-50 text-[#4E44CE] rounded-xl">÷</button>
-                    <button type="button" onclick="addComum('*')" class="p-3 bg-indigo-50 text-[#4E44CE] rounded-xl">×</button>
-                    <button type="button" onclick="addComum('4')" class="p-3 bg-gray-50 text-gray-700 rounded-xl">4</button>
-                    <button type="button" onclick="addComum('5')" class="p-3 bg-gray-50 text-gray-700 rounded-xl">5</button>
-                    <button type="button" onclick="addComum('6')" class="p-3 bg-gray-50 text-gray-700 rounded-xl">6</button>
-                    <button type="button" onclick="addComum('-')" class="p-3 bg-indigo-50 text-[#4E44CE] rounded-xl">-</button>
-                    <button type="button" class="p-3 bg-indigo-50/50 text-gray-300 rounded-xl cursor-not-allowed">√</button>
-                    <button type="button" onclick="addComum('1')" class="p-3 bg-gray-50 text-gray-700 rounded-xl">1</button>
-                    <button type="button" onclick="addComum('2')" class="p-3 bg-gray-50 text-gray-700 rounded-xl">2</button>
-                    <button type="button" onclick="addComum('3')" class="p-3 bg-gray-50 text-gray-700 rounded-xl">3</button>
-                    <button type="button" onclick="addComum('+')" class="p-3 bg-indigo-50 text-[#4E44CE] rounded-xl">+</button>
-                    <button type="button" onclick="calcularComum()" class="p-3 bg-[#4E44CE] text-white rounded-xl row-span-2">=</button>
-                    <button type="button" onclick="addComum('0')" class="col-span-2 p-3 bg-gray-50 text-gray-700 rounded-xl">0</button>
-                    <button type="button" onclick="addComum('.')" class="p-3 bg-gray-50 text-gray-700 rounded-xl">.</button>
-                    <button type="button" class="p-3 bg-indigo-50/50 text-gray-300 rounded-xl cursor-not-allowed">log</button>
-                </div>
+    <button type="button" onclick="addComum('(')" class="p-3 bg-indigo-50/50 text-[#4E44CE] rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-indigo-200 active:scale-95">(</button>
+    <button type="button" onclick="addComum(')')" class="p-3 bg-indigo-50/50 text-[#4E44CE] rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-indigo-200 active:scale-95">)</button>
+    <button type="button" onclick="addComum('**')" class="p-3 bg-indigo-50/50 text-[#4E44CE] rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-indigo-200 active:scale-95">^</button>
+    <button type="button" onclick="addComum('/100')" class="p-3 bg-indigo-50/50 text-[#4E44CE] rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-indigo-200 active:scale-95">%</button>
+    <button type="button" onclick="limparComum()" class="p-3 bg-red-50 text-red-500 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-red-200 active:scale-95">AC</button>
+    
+    <button type="button" onclick="addComum('7')" class="p-3 bg-gray-50 text-gray-700 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-gray-300 active:scale-95">7</button>
+    <button type="button" onclick="addComum('8')" class="p-3 bg-gray-50 text-gray-700 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-gray-300 active:scale-95">8</button>
+    <button type="button" onclick="addComum('9')" class="p-3 bg-gray-50 text-gray-700 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-gray-300 active:scale-95">9</button>
+    <button type="button" onclick="addComum('/')" class="p-3 bg-indigo-50 text-[#4E44CE] rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-indigo-200 active:scale-95">÷</button>
+    <button type="button" onclick="addComum('*')" class="p-3 bg-indigo-50 text-[#4E44CE] rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-indigo-200 active:scale-95">×</button>
+    
+    <button type="button" onclick="addComum('4')" class="p-3 bg-gray-50 text-gray-700 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-gray-300 active:scale-95">4</button>
+    <button type="button" onclick="addComum('5')" class="p-3 bg-gray-50 text-gray-700 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-gray-300 active:scale-95">5</button>
+    <button type="button" onclick="addComum('6')" class="p-3 bg-gray-50 text-gray-700 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-gray-300 active:scale-95">6</button>
+    <button type="button" onclick="addComum('-')" class="p-3 bg-indigo-50 text-[#4E44CE] rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-indigo-200 active:scale-95">-</button>
+    <button type="button" class="p-3 bg-indigo-50/50 text-gray-300 rounded-xl cursor-not-allowed">√</button>
+    
+    <button type="button" onclick="addComum('1')" class="p-3 bg-gray-50 text-gray-700 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-gray-300 active:scale-95">1</button>
+    <button type="button" onclick="addComum('2')" class="p-3 bg-gray-50 text-gray-700 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-gray-300 active:scale-95">2</button>
+    <button type="button" onclick="addComum('3')" class="p-3 bg-gray-50 text-gray-700 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-gray-300 active:scale-95">3</button>
+    <button type="button" onclick="addComum('+')" class="p-3 bg-indigo-50 text-[#4E44CE] rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-indigo-200 active:scale-95">+</button>
+    <button type="button" onclick="calcularComum()" class="p-3 bg-[#4E44CE] text-white rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-indigo-400 active:scale-95 row-span-2">=</button>
+    
+    <button type="button" onclick="addComum('0')" class="col-span-2 p-3 bg-gray-50 text-gray-700 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-gray-300 active:scale-95">0</button>
+    <button type="button" onclick="addComum('.')" class="p-3 bg-gray-50 text-gray-700 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-gray-300 active:scale-95">.</button>
+    <button type="button" class="p-3 bg-indigo-50/50 text-gray-300 rounded-xl cursor-not-allowed">log</button>
+</div>
             </div>
         </div>
     </div>
