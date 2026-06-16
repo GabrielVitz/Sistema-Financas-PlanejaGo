@@ -79,7 +79,7 @@
                         </button>
                     </div>
 
-                    <a href="{{ route('login.index') }}" class="text-sm text-[#2C2966] text-center">Já tenho uma conta</a>
+                    <a href="{{ route('login') }}" class="text-sm text-[#2C2966] text-center">Já tenho uma conta</a>
                 </div>
 
             </div>
