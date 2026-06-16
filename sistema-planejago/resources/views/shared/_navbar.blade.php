@@ -47,14 +47,14 @@
       <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
         
         @guest
-          @if(Route::is('user.create') || Route::is('login.index'))
+          @if(Route::is('user.create') || Route::is('login'))
             <a href="{{ route('home') }}" class="bg-white p-2 border rounded-sm">Cancelar</a>
           @else
           <div class="flex space-x-2">
             
             <a href="{{ route('user.create') }}" class="bg-white p-2 border rounded-sm">Registrar-se</a>
             
-            <a href="{{ route('login.index') }}" class="bg-purple-300 p-2 border rounded-sm">Login</a>
+            <a href="{{ route('login') }}" class="bg-purple-300 p-2 border rounded-sm">Login</a>
           </div>
           @endif
         @endguest
