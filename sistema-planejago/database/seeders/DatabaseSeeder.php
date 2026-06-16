@@ -18,19 +18,22 @@ class DatabaseSeeder extends Seeder
     {
         $agora = now();
 
-        DB::table('tipo_lancamentos')->insert([
+        // 1. Tipo de Lançamentos
+        DB::table('tipo_lancamentos')->upsert([
             ['id' => 1, 'titulo' => 'Despesa', 'descricao' => 'Saídas de dinheiro', 'created_at' => $agora, 'updated_at' => $agora],
             ['id' => 2, 'titulo' => 'Receita', 'descricao' => 'Entradas de dinheiro', 'created_at' => $agora, 'updated_at' => $agora],
-        ]);
+        ], ['id'], ['titulo', 'descricao', 'updated_at']);
 
-        DB::table('frequencias')->insert([
+        // 2. Frequências
+        DB::table('frequencias')->upsert([
             ['id' => 1, 'titulo' => 'Não se repete', 'descricao' => 'Lançamento único', 'created_at' => $agora, 'updated_at' => $agora],
             ['id' => 2, 'titulo' => 'Diariamente', 'descricao' => 'Ocorre todos os dias', 'created_at' => $agora, 'updated_at' => $agora],
             ['id' => 3, 'titulo' => 'Semanalmente', 'descricao' => 'Ocorre toda semana', 'created_at' => $agora, 'updated_at' => $agora],
             ['id' => 4, 'titulo' => 'Mensalmente', 'descricao' => 'Ocorre todo mês', 'created_at' => $agora, 'updated_at' => $agora],
-        ]);
+        ], ['id'], ['titulo', 'descricao', 'updated_at']);
 
-        DB::table('categorias')->insert([
+        // 3. Categorias
+        DB::table('categorias')->upsert([
             // Categorias de Despesa
             ['id' => 1, 'titulo' => 'Casa', 'descricao' => 'Gastos residenciais', 'tipo_lancamento_id' => 1, 'created_at' => $agora, 'updated_at' => $agora],
             ['id' => 2, 'titulo' => 'Educação', 'descricao' => 'Escola e faculdade', 'tipo_lancamento_id' => 1, 'created_at' => $agora, 'updated_at' => $agora],
@@ -40,14 +43,17 @@ class DatabaseSeeder extends Seeder
             ['id' => 4, 'titulo' => 'Salário', 'descricao' => 'Renda principal', 'tipo_lancamento_id' => 2, 'created_at' => $agora, 'updated_at' => $agora],
             ['id' => 5, 'titulo' => 'Investimentos', 'descricao' => 'Rendimentos', 'tipo_lancamento_id' => 2, 'created_at' => $agora, 'updated_at' => $agora],
             ['id' => 6, 'titulo' => 'Empréstimos', 'descricao' => 'Valores tomados', 'tipo_lancamento_id' => 2, 'created_at' => $agora, 'updated_at' => $agora],
-        ]);
+        ], ['id'], ['titulo', 'descricao', 'tipo_lancamento_id', 'updated_at']);
         
+        // 4. Usuários
         $this->call([
             UserSeeder::class,
         ]);
 
-        DB::table('lancamentos')->insert([
+        // 5. Lançamentos 
+        DB::table('lancamentos')->upsert([
             [
+                'id' => 1,
                 'descricao' => 'Plano de Saúde',
                 'valor' => 350.00,
                 'status_pago' => 1, 
@@ -62,6 +68,7 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 1,
             ],
             [
+                'id' => 2,
                 'descricao' => 'Mensalidade Escolar',
                 'valor' => 600.00,
                 'status_pago' => 1,
@@ -76,6 +83,7 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 1,
             ],
             [
+                'id' => 3,
                 'descricao' => 'Conta de Água',
                 'valor' => 95.90,
                 'status_pago' => 0,
@@ -90,6 +98,7 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 1,
             ],
             [
+                'id' => 4,
                 'descricao' => 'Farmácia - Remédios',
                 'valor' => 85.00,
                 'status_pago' => 1,
@@ -104,6 +113,7 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 1,
             ],
             [
+                'id' => 5,
                 'descricao' => 'Internet Fibra',
                 'valor' => 150.00,
                 'status_pago' => 0,
@@ -117,7 +127,7 @@ class DatabaseSeeder extends Seeder
                 'tipo_lancamento_id' => 1,
                 'user_id' => 1,
             ]
-        ]);
+        ], ['id'], ['descricao', 'valor', 'status_pago', 'data_criacao', 'data_vencimento', 'log_data_alteracao', 'categoria_id', 'frequencia_id', 'tipo_lancamento_id']);
         
     }
 }
