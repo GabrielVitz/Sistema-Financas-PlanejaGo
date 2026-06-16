@@ -14,7 +14,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::middleware('guest')->group(function () {
 
     Route::controller(LoginController::class)->group(function() {
-        Route::get('/auth/login', 'index')->name('login.index');
+        Route::get('/auth/login', 'index')->name('login');
         Route::post('/login', 'store')->name('login.store');
     });
 
@@ -38,7 +38,7 @@ Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('user.dashb
         // Verifica se o usuário está logado
         if (!auth()->check()) {
             // Se não estiver, redireciona para a tela de login (ajuste o caminho se necessário)
-            return redirect()->route('login.index');
+            return redirect()->route('login');
         }
     
         return view('home.calculadora');
@@ -72,7 +72,7 @@ Route::get('/calculadora', function () {
     // Verifica se o usuário está logado
     if (!auth()->check()) {
         // Se não estiver, redireciona para a tela de login (ajuste o caminho se necessário)
-        return redirect()->route('login.index');
+        return redirect()->route('login');
     }
   
     return view('home.calculadora');
